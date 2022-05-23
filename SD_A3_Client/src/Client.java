@@ -18,8 +18,7 @@ public class Client {
         //Lanches
         int lanche, qntL1 = 0, qntL2 = 0, qntL3 = 0;
         String lanche1 = "X-SALADA", lanche2 = "X-BACON", lanche3 = "X-TUDO";
-        
-        double totalLanches = 0, preco1 = 7.00, preco2 = 9.00, preco3 = 12.00;
+        double totalLanches = 0, precoL1 = 7.00, precoL2 = 9.00, precoL3 = 12.00;
        
         System.out.println("Carregando o cliente.");
         
@@ -72,7 +71,7 @@ public class Client {
                         }while(adicionar == 's' || adicionar == 'S');
 
                         System.out.println("\nLanches pedidos: " + lanches);
-                        totalLanches = objRemoto.calcularTotal((preco1 * qntL1) + (preco2 * qntL2) + (preco3 * qntL3));
+                        totalLanches = objRemoto.calcularTotal((precoL1 * qntL1) + (precoL2 * qntL2) + (precoL3 * qntL3));
                         System.out.println("\nTotal dos lanches pedidos: " + totalLanches);
                         System.out.println("\n-------------------------------------------------------------------------------");
 
