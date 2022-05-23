@@ -70,9 +70,10 @@ public class Client {
 
                         }while(adicionar == 's' || adicionar == 'S');
 
+                        System.out.println("\n-------------------------------------------------------------------------------");
                         System.out.println("\nLanches pedidos: " + lanches);
-                        totalLanches = objRemoto.calcularTotal((precoL1 * qntL1) + (precoL2 * qntL2) + (precoL3 * qntL3));
-                        System.out.println("\nTotal dos lanches pedidos: " + totalLanches);
+                        totalLanches = objRemoto.calcularTotal(precoL1, precoL2, precoL3, qntL1, qntL2, qntL3);
+                        System.out.println("Total dos lanches pedidos: R$" + totalLanches);
                         System.out.println("\n-------------------------------------------------------------------------------");
 
                         break;

@@ -9,7 +9,7 @@ public class Server extends UnicastRemoteObject {
     
     public Server() throws RemoteException{
         super();
-        System.out.println("Novo Servidor Atendimento disponível.");
+        System.out.println("Servidor disponivel.");
     }
     
     public static void main(String[] args) {

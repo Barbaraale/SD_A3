@@ -5,13 +5,13 @@ public class Atendimento implements Interface{
     
     public Atendimento() throws RemoteException{
         super();
-        System.out.println("Novo Servidor Atendimento disponível.");
+        System.out.println("Servidor disponivel.");
     }
     
     @Override
     public String exibirMenuPrincipal() throws RemoteException {
           return
-            "***  MATRIX BURGERS  ***"+
+            "\n***  MATRIX BURGERS  ***"+
             "\n-------------------------------------------------------------------------------"+
             "\nMENU PRINCIPAL"+
             "\n1 - LANCHES"+
@@ -31,7 +31,8 @@ public class Atendimento implements Interface{
     }
     
     @Override
-    public double calcularTotal(double total) throws RemoteException {
+    public double calcularTotal(double p1, double p2, double p3, int q1, int q2, int q3) throws RemoteException {
+        double total = (p1 * q1) + (p2 * q2) + (p3 * q3);
         return total;
     }
 }
