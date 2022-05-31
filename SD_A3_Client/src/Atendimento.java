@@ -2,6 +2,8 @@ import java.rmi.RemoteException;
 
 public class Atendimento implements Interface{
     
+    private int acumulador = 0;
+    
     public Atendimento() throws RemoteException{
         super();
         System.out.println("Servidor disponivel.");
@@ -41,7 +43,7 @@ public class Atendimento implements Interface{
     }
     
     @Override
-    public double calcularTotal(double p1, double p2, double p3, int q1, int q2, int q3) throws RemoteException {
+    public double  calcularTotalItem (double p1, double p2, double p3, int q1, int q2, int q3) throws RemoteException {
         double total = (p1 * q1) + (p2 * q2) + (p3 * q3);
         return total;
     }
@@ -52,4 +54,36 @@ public class Atendimento implements Interface{
         return totalPedido;
     }
 
+    @Override
+    public int gerarNumeroPedido() throws RemoteException {
+        int i = 0;
+        i++;
+        acumulador = acumulador + i;
+        return acumulador;
+    }
+
+//    @Override
+//    public String gerarPagamento() throws RemoteException {
+//        return 
+//            "\n-------------------------------------------------------------------------------"+
+//            "\nFORMAS DE PAGAMENTO"+
+//            "\n1 - Débito"+
+//            "\n2 - Crédito"+
+//            "\n3 - Pix"+
+//            "\n-------------------------------------------------------------------------------"+     
+//        
+//            "Digite a opcao de pagamento desejada: ";
+//    }
+
+    @Override
+    public String opcaoPagamento() throws RemoteException {
+        return 
+            "\n-------------------------------------------------------------------------------"+
+            "\nFORMAS DE PAGAMENTO"+
+            "\n1 - Débito"+
+            "\n2 - Crédito"+
+            "\n3 - Pix"+
+            "\n-------------------------------------------------------------------------------"+
+            "\nDigite a opcao de pagamento desejada: ";
+    }
 }

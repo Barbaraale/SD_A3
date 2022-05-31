@@ -9,14 +9,11 @@ public class Client {
         //Listas dos pedidos
         ArrayList<String> lanches = new ArrayList<>();
         ArrayList<String> sucos = new ArrayList<>();
-        ArrayList<String> pedidos = new ArrayList<>();
+        //ArrayList<String> pedidos = new ArrayList<>();
         
         //Repetição
-        char adicionar, voltar;
+        char adicionar, voltar, confirmar;
         
-        //Escolha do menu
-        int escolhaMenuPrincipal;
-     
         //Lanches
         int lanche, qntL1 = 0, qntL2 = 0, qntL3 = 0;
         String lanche1 = "X-SALADA", lanche2 = "X-BACON", lanche3 = "X-TUDO";
@@ -26,9 +23,7 @@ public class Client {
         int suco, qntS1 = 0, qntS2 = 0, qntS3 = 0;
         String suco1 = "SUCO DE LARANJA", suco2 = "LIMONADA", suco3 = "PINK LEMONADE";
         double totalSucos = 0, precoS1 = 10.00, precoS2 = 8.00, precoS3 = 15.00;
-        
-        double totalPedido = 0;
-       
+             
         System.out.println("Carregando o cliente.");
         
         try{
@@ -41,7 +36,7 @@ public class Client {
                 System.out.println(menuPrincipal);
 
                 System.out.print("\nDigite o numero do menu desejado: ");
-                escolhaMenuPrincipal = input.nextInt();
+                int escolhaMenuPrincipal = input.nextInt();
         
                 switch(escolhaMenuPrincipal){
                     case 1:
@@ -78,7 +73,7 @@ public class Client {
                             
                             System.out.println("\n-------------------------------------------------------------------------------");
                             System.out.println("\nLanches pedidos: " + lanches);
-                            totalLanches = objRemoto.calcularTotal(precoL1, precoL2, precoL3, qntL1, qntL2, qntL3);
+                            totalLanches = objRemoto. calcularTotalItem(precoL1, precoL2, precoL3, qntL1, qntL2, qntL3);
                             System.out.println("Total dos lanches pedidos: R$" + totalLanches);
                             System.out.println("\n-------------------------------------------------------------------------------");
 
@@ -86,13 +81,6 @@ public class Client {
                             adicionar = input.next().charAt(0);
 
                         }while(adicionar == 's' || adicionar == 'S');
-                        
-//                        System.out.println("\n-------------------------------------------------------------------------------");
-//                        System.out.println("\nLanches pedidos: " + lanches);
-//                        totalLanches = objRemoto.calcularTotal(precoL1, precoL2, precoL3, qntL1, qntL2, qntL3);
-//                        System.out.println("Total dos lanches pedidos: R$" + totalLanches);
-//                        System.out.println("\n-------------------------------------------------------------------------------");
-
                         break;
 
                     case 2: 
@@ -129,7 +117,7 @@ public class Client {
                             
                             System.out.println("\n-------------------------------------------------------------------------------");
                             System.out.println("\nSucos pedidos: " + sucos);
-                            totalSucos = objRemoto.calcularTotal(precoS1, precoS2, precoS3, qntS1, qntS2, qntS3);
+                            totalSucos = objRemoto. calcularTotalItem(precoS1, precoS2, precoS3, qntS1, qntS2, qntS3);
                             System.out.println("Total dos sucos pedidos: R$" + totalSucos);
                             System.out.println("\n-------------------------------------------------------------------------------");
 
@@ -137,13 +125,6 @@ public class Client {
                             adicionar = input.next().charAt(0);
 
                         }while(adicionar == 's' || adicionar == 'S');
-                        
-//                        System.out.println("\n-------------------------------------------------------------------------------");
-//                        System.out.print("\nPedido: " + lanches + sucos);
-//                        totalPedido = objRemoto.calcularTotalPedido(totalLanches, totalSucos);
-//                        System.out.print("\nTotal: R$" + totalPedido);
-//                        System.out.println("\n-------------------------------------------------------------------------------");
-
                         break;
                     
                     case 3:
@@ -161,11 +142,21 @@ public class Client {
             
             System.out.println("\n-------------------------------------------------------------------------------");
             System.out.print("\nPedido: " + lanches + sucos);
-            totalPedido = objRemoto.calcularTotalPedido(totalLanches, totalSucos);
+            double totalPedido = objRemoto.calcularTotalPedido(totalLanches, totalSucos);
             System.out.print("\nTotal: R$" + totalPedido);
             System.out.println("\n-------------------------------------------------------------------------------");
             
-            //double valor = objRemoto.calcularTotal(12.00, qnt);
+            System.out.print("Confirmar compra? (s/n): ");
+            confirmar = input.next().charAt(0);
+            
+            if(confirmar == 's' || confirmar == 'S'){
+                
+                String opcao = objRemoto.opcaoPagamento();
+                System.out.print(opcao);
+                
+                int numCompra = objRemoto.gerarNumeroPedido();
+                System.out.print("Numero do pedido: " + numCompra);
+            } 
             
         }catch(Exception e){
             System.out.println("Erro: "+ e.getMessage());
