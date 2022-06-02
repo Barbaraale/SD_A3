@@ -8,7 +8,7 @@ public class Kitchen {
         try{
             Interface objRemoto = (Interface) Naming.lookup("rmi://LOCALHOST:1099/atendimento");
             
-            System.out.print(objRemoto.pegarPedido());
+            System.out.print("Pedidos: " + objRemoto.pegarPedido());            
              
         }catch(Exception e){
             System.out.println("Erro: "+ e.getMessage());

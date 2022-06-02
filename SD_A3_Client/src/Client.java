@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Client {
     public static void main(String[] args) {
+        
         Scanner input = new Scanner(System.in);
         
         //Listas 
@@ -40,8 +41,7 @@ public class Client {
                 switch(escolhaMenuPrincipal){
                     case 1:
                         do{
-                            String subMenuLanches = objRemoto.exibirSubMenuLanches();
-                            System.out.print(subMenuLanches);
+                            System.out.print(objRemoto.exibirSubMenuLanches());
                             
                             System.out.print("\nDigite o numero do lanche desejado: ");
                             escolhaLanche = input.nextInt();
@@ -84,8 +84,7 @@ public class Client {
 
                     case 2: 
                         do{
-                            String subMenuSucos = objRemoto.exibirSubMenuSucos();
-                            System.out.print(subMenuSucos);
+                            System.out.print(objRemoto.exibirSubMenuSucos());
 
                             System.out.print("\nDigite o numero do suco desejado: ");
                             escolhaSuco = input.nextInt();
@@ -141,17 +140,21 @@ public class Client {
             
             System.out.println("-------------------------------------------------------------------------------");
             System.out.println("Pedido: " + arrayLanches + arraySucos);
-            double totalPedido = objRemoto.calcularTotalPedido(totalLanches, totalSucos);
-            System.out.println("Total: R$" + totalPedido);
+            System.out.println("Total: R$" + objRemoto.calcularTotalPedido(totalLanches, totalSucos));
             System.out.println("-------------------------------------------------------------------------------");
             
             System.out.print("Confirmar compra? (s - sim / n - nao): ");
             confirmar = input.next().charAt(0);
             
             if(confirmar == 's' || confirmar == 'S'){
+                System.out.print(objRemoto.gerarPagamento());
+                System.out.print("\nDigite a opcao de pagamento desejada: ");
+                int escolhaPagamento = input.nextInt();
+                System.out.print("PAGAMENTO EFETUADO COM SUCESSO!");
+                
                 int numCompra = objRemoto.gerarNumeroPedido();
-                System.out.println("Numero do pedido: " + numCompra);
-                objRemoto.pedido(arrayLanches, arraySucos, numCompra);          
+                System.out.println("\nNumero do pedido: " + numCompra);
+                objRemoto.pedido(numCompra, arrayLanches, arraySucos);          
             } 
             
         }catch(Exception e){

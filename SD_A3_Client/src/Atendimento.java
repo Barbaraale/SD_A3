@@ -68,17 +68,17 @@ public class Atendimento implements Interface{
         return 
             "-------------------------------------------------------------------------------"+
             "\nFORMAS DE PAGAMENTO"+
-            "\n1 - Débito"+
-            "\n2 - Crédito"+
+            "\n1 - Debito"+
+            "\n2 - Credito"+
             "\n3 - Pix"+
             "\n-------------------------------------------------------------------------------";    
     }
 
     @Override
-    public Object pedido(Object lanches, Object sucos, int numeroPedido) throws RemoteException {
+    public Object pedido(int numeroPedido, Object lanches, Object sucos) throws RemoteException {
+        pedidos.add(numeroPedido);
         pedidos.add(lanches);
         pedidos.add(sucos);
-        pedidos.add(numeroPedido);
         return pedidos;
     }  
 
