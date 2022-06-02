@@ -6,21 +6,20 @@ public class Client {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         
-        //Listas dos pedidos
+        //Listas 
         ArrayList<String> lanches = new ArrayList<>();
         ArrayList<String> sucos = new ArrayList<>();
-        //ArrayList<String> pedidos = new ArrayList<>();
         
         //Repetição
         char adicionar, voltar, confirmar;
         
         //Lanches
-        int lanche, qntL1 = 0, qntL2 = 0, qntL3 = 0;
+        int escolhaLanche, qntL1 = 0, qntL2 = 0, qntL3 = 0;
         String lanche1 = "X-SALADA", lanche2 = "X-BACON", lanche3 = "X-TUDO";
         double totalLanches = 0, precoL1 = 7.00, precoL2 = 9.00, precoL3 = 12.00;
         
         //Sucos
-        int suco, qntS1 = 0, qntS2 = 0, qntS3 = 0;
+        int escolhaSuco, qntS1 = 0, qntS2 = 0, qntS3 = 0;
         String suco1 = "SUCO DE LARANJA", suco2 = "LIMONADA", suco3 = "PINK LEMONADE";
         double totalSucos = 0, precoS1 = 10.00, precoS2 = 8.00, precoS3 = 15.00;
              
@@ -29,7 +28,7 @@ public class Client {
         try{
             Interface objRemoto = (Interface) Naming.lookup("rmi://LOCALHOST:1099/atendimento");
             
-           System.out.print("\n***  MATRIX BURGERS  ***");
+            System.out.print("\n***  MATRIX BURGERS  ***");
            
             do{
                 String menuPrincipal = objRemoto.exibirMenuPrincipal();
@@ -43,11 +42,10 @@ public class Client {
                         do{
                             String subMenuLanches = objRemoto.exibirSubMenuLanches();
                             System.out.println(subMenuLanches);
+//                            System.out.print("\nDigite o numero do lanche desejado: ");
+                            escolhaLanche = input.nextInt();
 
-                            System.out.print("\nDigite o numero do lanche desejado: ");
-                            lanche = input.nextInt();
-
-                            switch(lanche){
+                            switch(escolhaLanche){
                                 case 1:
                                     System.out.print("\nDigite a quantidade de " + lanche1 + ": ");
                                     qntL1 = input.nextInt();
@@ -88,10 +86,10 @@ public class Client {
                             String subMenuSucos = objRemoto.exibirSubMenuSucos();
                             System.out.println(subMenuSucos);
 
-                            System.out.print("\nDigite o numero do suco desejado: ");
-                            suco = input.nextInt();
+//                            System.out.print("\nDigite o numero do suco desejado: ");
+                            escolhaSuco = input.nextInt();
 
-                            switch(suco){
+                            switch(escolhaSuco){
                                 case 1:
                                     System.out.print("\nDigite a quantidade de " + suco1 + ": ");
                                     qntS1 = input.nextInt();
@@ -150,13 +148,19 @@ public class Client {
             confirmar = input.next().charAt(0);
             
             if(confirmar == 's' || confirmar == 'S'){
-                
-                String opcao = objRemoto.opcaoPagamento();
-                System.out.print(opcao);
-                
+//                String opcao = objRemoto.opcaoPagamento();
+//                System.out.print(opcao);
+
                 int numCompra = objRemoto.gerarNumeroPedido();
                 System.out.print("Numero do pedido: " + numCompra);
+                
+                objRemoto.pedido(lanches, sucos, numCompra);
+                
+                
+                
             } 
+            
+            
             
         }catch(Exception e){
             System.out.println("Erro: "+ e.getMessage());

@@ -11,4 +11,8 @@ public interface Interface extends Remote {
     public String opcaoPagamento ()throws RemoteException;
 //    public String gerarPagamento()throws RemoteException;
     public int gerarNumeroPedido()throws RemoteException;
+
+
+    public Object pedido(Object lanches, Object sucos, int numeroPedido)throws RemoteException;
+    public Object pegarPedido()throws RemoteException;
 }

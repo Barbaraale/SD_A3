@@ -1,8 +1,10 @@
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 public class Atendimento implements Interface{
     
     private int acumulador = 0;
+    private ArrayList<Object> pedidos = new ArrayList<>();
     
     public Atendimento() throws RemoteException{
         super();
@@ -16,7 +18,6 @@ public class Atendimento implements Interface{
             "\nMENU PRINCIPAL"+
             "\n1 - LANCHES"+
             "\n2 - SUCOS"+
-            "\n3 - SAIR"+
             "\n-------------------------------------------------------------------------------";
     }
    
@@ -28,7 +29,8 @@ public class Atendimento implements Interface{
             "\n1 - X-SALADA = R$7,00"+
             "\n2 - X-BACON = R$9,00"+
             "\n3 - X-TUDO = R$12,00"+
-            "\n-------------------------------------------------------------------------------";
+            "\n-------------------------------------------------------------------------------"+
+            "\nDigite o numero do lanche desejado: ";
     }
     
     @Override
@@ -39,7 +41,8 @@ public class Atendimento implements Interface{
             "\n1 - SUCO DE LARANJA = R$10,00"+
             "\n2 - LIMONADA = R$8,00"+
             "\n3 - PINK LEMONADE = R$15,00"+
-            "\n-------------------------------------------------------------------------------";
+            "\n-------------------------------------------------------------------------------"+
+            "\nDigite o numero do suco desejado: ";
     }
     
     @Override
@@ -86,4 +89,18 @@ public class Atendimento implements Interface{
             "\n-------------------------------------------------------------------------------"+
             "\nDigite a opcao de pagamento desejada: ";
     }
+
+    @Override
+    public Object pedido(Object lanches, Object sucos, int numeroPedido) throws RemoteException {
+        pedidos.add(lanches);
+        pedidos.add(sucos);
+        pedidos.add(numeroPedido);
+        return pedidos;
+    }  
+
+    @Override
+    public Object pegarPedido() throws RemoteException {
+        return pedidos;
+    }
+
 }
