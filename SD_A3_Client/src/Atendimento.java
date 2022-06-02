@@ -14,7 +14,7 @@ public class Atendimento implements Interface{
     @Override
     public String exibirMenuPrincipal() throws RemoteException {
           return
-            "\n-------------------------------------------------------------------------------"+
+            "-------------------------------------------------------------------------------"+
             "\nMENU PRINCIPAL"+
             "\n1 - LANCHES"+
             "\n2 - SUCOS"+
@@ -24,25 +24,23 @@ public class Atendimento implements Interface{
     @Override
     public String exibirSubMenuLanches() throws RemoteException {
           return
-            "\n-------------------------------------------------------------------------------"+
+            "-------------------------------------------------------------------------------"+
             "\nMENU LANCHES"+
             "\n1 - X-SALADA = R$7,00"+
             "\n2 - X-BACON = R$9,00"+
             "\n3 - X-TUDO = R$12,00"+
-            "\n-------------------------------------------------------------------------------"+
-            "\nDigite o numero do lanche desejado: ";
+            "\n-------------------------------------------------------------------------------";
     }
     
     @Override
     public String exibirSubMenuSucos() throws RemoteException {
           return
-            "\n-------------------------------------------------------------------------------"+
+            "-------------------------------------------------------------------------------"+
             "\nMENU SUCOS"+
             "\n1 - SUCO DE LARANJA = R$10,00"+
             "\n2 - LIMONADA = R$8,00"+
             "\n3 - PINK LEMONADE = R$15,00"+
-            "\n-------------------------------------------------------------------------------"+
-            "\nDigite o numero do suco desejado: ";
+            "\n-------------------------------------------------------------------------------";
     }
     
     @Override
@@ -65,29 +63,15 @@ public class Atendimento implements Interface{
         return acumulador;
     }
 
-//    @Override
-//    public String gerarPagamento() throws RemoteException {
-//        return 
-//            "\n-------------------------------------------------------------------------------"+
-//            "\nFORMAS DE PAGAMENTO"+
-//            "\n1 - Débito"+
-//            "\n2 - Crédito"+
-//            "\n3 - Pix"+
-//            "\n-------------------------------------------------------------------------------"+     
-//        
-//            "Digite a opcao de pagamento desejada: ";
-//    }
-
     @Override
-    public String opcaoPagamento() throws RemoteException {
+    public String gerarPagamento() throws RemoteException {
         return 
-            "\n-------------------------------------------------------------------------------"+
+            "-------------------------------------------------------------------------------"+
             "\nFORMAS DE PAGAMENTO"+
             "\n1 - Débito"+
             "\n2 - Crédito"+
             "\n3 - Pix"+
-            "\n-------------------------------------------------------------------------------"+
-            "\nDigite a opcao de pagamento desejada: ";
+            "\n-------------------------------------------------------------------------------";    
     }
 
     @Override
