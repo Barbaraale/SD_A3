@@ -76,7 +76,7 @@ public class Client {
                             System.out.println("Total dos lanches pedidos: R$" + totalLanches);
                             System.out.println("-------------------------------------------------------------------------------");
 
-                            System.out.print("Deseja adicionar mais lanches? (s/n): ");
+                            System.out.print("Deseja adicionar mais lanches? (s - sim / n - nao): ");
                             adicionar = input.next().charAt(0);
 
                         }while(adicionar == 's' || adicionar == 'S');
@@ -120,7 +120,7 @@ public class Client {
                             System.out.println("Total dos sucos pedidos: R$" + totalSucos);
                             System.out.println("-------------------------------------------------------------------------------");
 
-                            System.out.print("Deseja adicionar mais sucos? (s/n): ");
+                            System.out.print("Deseja adicionar mais sucos? (s - sim / n - nao): ");
                             adicionar = input.next().charAt(0);
 
                         }while(adicionar == 's' || adicionar == 'S');
@@ -134,7 +134,7 @@ public class Client {
                         break;   
                 }
                 
-                System.out.print("Deseja voltar para o menu principal? (s/n): ");
+                System.out.print("Deseja voltar para o menu principal? (s - sim / n - nao): ");
                 voltar = input.next().charAt(0);
             
             }while(voltar == 's' || voltar == 'S');
@@ -145,7 +145,7 @@ public class Client {
             System.out.println("Total: R$" + totalPedido);
             System.out.println("-------------------------------------------------------------------------------");
             
-            System.out.print("Confirmar compra? (s/n): ");
+            System.out.print("Confirmar compra? (s - sim / n - nao): ");
             confirmar = input.next().charAt(0);
             
             if(confirmar == 's' || confirmar == 'S'){
