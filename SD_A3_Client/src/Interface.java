@@ -1,5 +1,6 @@
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 public interface Interface extends Remote {
     
@@ -10,7 +11,11 @@ public interface Interface extends Remote {
     public double calcularTotalPedido (double totalLanches, double totalSucos) throws RemoteException;
     public String gerarPagamento()throws RemoteException;
     public int gerarNumeroPedido()throws RemoteException;
-    public Object pedido(int numeroPedido, Object lanches, Object sucos)throws RemoteException;
-    public Object pegarPedido()throws RemoteException;
+    public ArrayList pedido(int numeroPedido, ArrayList lanches, ArrayList sucos) throws RemoteException;
+    public ArrayList pegarTodosPedidos()throws RemoteException;
+    public Object pegarPedido(int x) throws RemoteException;
+    public Object removerPedido(int x)throws RemoteException;
+    
+//    public Object enviarPedido(int numeroPedido)throws RemoteException;
     
 }

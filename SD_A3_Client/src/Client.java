@@ -154,7 +154,7 @@ public class Client {
                 
                 int numCompra = objRemoto.gerarNumeroPedido();
                 System.out.println("\nNumero do pedido: " + numCompra);
-                objRemoto.pedido(numCompra, arrayLanches, arraySucos);          
+                objRemoto.pedido(numCompra,arrayLanches, arraySucos);          
             } 
             
         }catch(Exception e){

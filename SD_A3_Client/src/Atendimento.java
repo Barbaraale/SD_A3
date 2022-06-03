@@ -73,18 +73,39 @@ public class Atendimento implements Interface{
             "\n3 - Pix"+
             "\n-------------------------------------------------------------------------------";    
     }
-
+    
     @Override
-    public Object pedido(int numeroPedido, Object lanches, Object sucos) throws RemoteException {
-        pedidos.add(numeroPedido);
-        pedidos.add(lanches);
-        pedidos.add(sucos);
+    public ArrayList pedido(int numeroPedido, ArrayList lanches, ArrayList sucos) throws RemoteException {
+        ArrayList<Object> p = new ArrayList<>();
+        p.add(numeroPedido);
+        p.add(lanches);
+        p.add(sucos);
+        pedidos.add(p);
         return pedidos;
     }  
-
+    
     @Override
-    public Object pegarPedido() throws RemoteException {
+    public ArrayList pegarTodosPedidos()throws RemoteException {
         return pedidos;
     }
 
+    @Override
+    public Object pegarPedido(int x) throws RemoteException {
+        Object t;
+            t = pedidos.get(x);
+        return t;
+    }
+
+    @Override
+    public Object removerPedido(int x) throws RemoteException {
+        pedidos.remove(x);
+        return pedidos;
+    }
+
+//    @Override
+//    public Object enviarPedido(int numeroPedido) throws RemoteException {
+//        pedidos.forEach((index) -> 
+//                index.forEach()
+//        );
+//    }
 }
