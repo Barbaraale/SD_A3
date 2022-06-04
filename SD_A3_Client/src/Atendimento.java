@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Atendimento implements Interface{
     
     private int acumulador = 0;
-    private ArrayList<Object> pedidos = new ArrayList<>();
+    private ArrayList<ArrayList> pedidos = new ArrayList<>();
     
     public Atendimento() throws RemoteException{
         super();
@@ -75,13 +75,12 @@ public class Atendimento implements Interface{
     }
     
     @Override
-    public ArrayList pedido(int numeroPedido, ArrayList lanches, ArrayList sucos) throws RemoteException {
-        ArrayList<Object> p = new ArrayList<>();
-        p.add(numeroPedido);
-        p.add(lanches);
-        p.add(sucos);
-        pedidos.add(p);
-        return pedidos;
+    public void criandoPedido(int numeroPedido, ArrayList lanches, ArrayList sucos) throws RemoteException {
+        ArrayList<Object> pedido = new ArrayList<>();
+        pedido.add(numeroPedido);
+        pedido.add(lanches);
+        pedido.add(sucos);
+        pedidos.add(pedido);
     }  
     
     @Override
@@ -90,22 +89,14 @@ public class Atendimento implements Interface{
     }
 
     @Override
-    public Object pegarPedido(int x) throws RemoteException {
-        Object t;
-            t = pedidos.get(x);
-        return t;
+    public ArrayList pegarPedido(int indice) throws RemoteException {
+        ArrayList p = pedidos.get(indice);
+        return p;
     }
 
     @Override
-    public Object removerPedido(int x) throws RemoteException {
-        pedidos.remove(x);
-        return pedidos;
+    public void removerPedido(int indice) throws RemoteException {
+        pedidos.remove(indice);
     }
 
-//    @Override
-//    public Object enviarPedido(int numeroPedido) throws RemoteException {
-//        pedidos.forEach((index) -> 
-//                index.forEach()
-//        );
-//    }
 }
