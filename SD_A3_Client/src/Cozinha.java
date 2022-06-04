@@ -7,7 +7,7 @@ public class Cozinha {
         
         Scanner input = new Scanner(System.in);
         
-        System.out.println("Carregando o cozinha.");
+        System.out.println("Carregando a cozinha.");
         
         try{
             Interface objRemoto = (Interface) Naming.lookup("rmi://LOCALHOST:1099/atendimento");
