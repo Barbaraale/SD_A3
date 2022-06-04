@@ -28,11 +28,10 @@ public class Cozinha {
                     } 
                 }
             }
-       
             System.out.print("-------------------------------------------------------------------------------");
             System.out.print("\nPEDIDOS");
             System.out.print("\n[Sem pedidos]");
-            System.out.print("\n-------------------------------------------------------------------------------");
+            System.out.print("\n-------------------------------------------------------------------------------\n");
            
         }catch(Exception e){
             System.out.println("Erro: "+ e.getMessage());
