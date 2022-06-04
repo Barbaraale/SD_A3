@@ -1,5 +1,4 @@
 import java.rmi.Naming;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Cozinha {
@@ -24,9 +23,7 @@ public class Cozinha {
                 int num = input.nextInt();
 
                 for(int j = 0; j < objRemoto.pegarTodosPedidos().size(); j++){    
-                    ArrayList a = objRemoto.pegarPedido(j);
-
-                    if(a.get(0).equals(num)){
+                    if(objRemoto.pegarPedido(j).get(0).equals(num)){
                         objRemoto.removerPedido(j);
                     } 
                 }
