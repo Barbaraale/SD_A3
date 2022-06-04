@@ -18,6 +18,9 @@ public class Atendimento implements Interface{
             "\nMENU PRINCIPAL"+
             "\n1 - LANCHES"+
             "\n2 - SUCOS"+
+            "\n"+
+            "\nCANCELAR PEDIDO"+
+            "\n3 - SAIR"+
             "\n-------------------------------------------------------------------------------";
     }
    
@@ -29,6 +32,9 @@ public class Atendimento implements Interface{
             "\n1 - X-SALADA = R$7,00"+
             "\n2 - X-BACON = R$9,00"+
             "\n3 - X-TUDO = R$12,00"+
+            "\n"+
+            "\nCANCELAR PEDIDO"+
+            "\n4 - SAIR"+
             "\n-------------------------------------------------------------------------------";
     }
     
@@ -40,6 +46,9 @@ public class Atendimento implements Interface{
             "\n1 - SUCO DE LARANJA = R$10,00"+
             "\n2 - LIMONADA = R$8,00"+
             "\n3 - PINK LEMONADE = R$15,00"+
+            "\n"+
+            "\nCANCELAR PEDIDO"+
+            "\n4 - SAIR"+
             "\n-------------------------------------------------------------------------------";
     }
     

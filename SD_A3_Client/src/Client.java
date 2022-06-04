@@ -35,7 +35,7 @@ public class Client {
                 String menuPrincipal = objRemoto.exibirMenuPrincipal();
                 System.out.print(menuPrincipal);
 
-                System.out.print("\nDigite o numero do menu desejado: ");
+                System.out.print("\nDigite a opcao desejada: ");
                 int escolhaMenuPrincipal = input.nextInt();
         
                 switch(escolhaMenuPrincipal){
@@ -64,19 +64,25 @@ public class Client {
                                     qntL3 = input.nextInt();
                                     arrayLanches.add(lanche3 + " x " + qntL3);
                                     break;
+                                    
+                                case 4:
+                                    System.exit(0);
+                                    break;
                                 
                                 default:
-                                    System.out.print("Opcao invalida, escolha os lanches de 1 a 3");
+                                    System.out.print("Opcao invalida, escolha de 1 a 4\n");
                                     break;
                             }
                             
-                            System.out.println("-------------------------------------------------------------------------------");
-                            System.out.println("Lanches pedidos: " + arrayLanches);
-                            totalLanches = objRemoto. calcularTotalItem(precoL1, precoL2, precoL3, qntL1, qntL2, qntL3);
-                            System.out.println("Total dos lanches pedidos: R$" + totalLanches);
-                            System.out.println("-------------------------------------------------------------------------------");
+                            if(escolhaLanche >= 1 && escolhaLanche <= 4){
+                                System.out.println("-------------------------------------------------------------------------------");
+                                System.out.println("Lanches pedidos: " + arrayLanches);
+                                totalLanches = objRemoto. calcularTotalItem(precoL1, precoL2, precoL3, qntL1, qntL2, qntL3);
+                                System.out.println("Total dos lanches pedidos: R$" + totalLanches);
+                                System.out.println("-------------------------------------------------------------------------------");
+                            }
 
-                            System.out.print("Deseja adicionar mais lanches? (s - sim / n - nao): ");
+                            System.out.print("Deseja adicionar lanches? (s - sim / n - nao): ");
                             adicionar = input.next().charAt(0);
 
                         }while(adicionar == 's' || adicionar == 'S');
@@ -107,56 +113,67 @@ public class Client {
                                     qntS3 = input.nextInt();
                                     arraySucos.add(suco3 + " x " + qntS3);
                                     break;
+                                    
+                                case 4:
+                                    System.exit(0);
+                                    break;
                                 
                                 default:
-                                    System.out.print("Opcao invalida, escolha os sucos de 1 a 3");
+                                    System.out.print("Opcao invalida, escolha de 1 a 4\n");
                                     break;
                             }
                             
-                            System.out.println("-------------------------------------------------------------------------------");
-                            System.out.println("Sucos pedidos: " + arraySucos);
-                            totalSucos = objRemoto. calcularTotalItem(precoS1, precoS2, precoS3, qntS1, qntS2, qntS3);
-                            System.out.println("Total dos sucos pedidos: R$" + totalSucos);
-                            System.out.println("-------------------------------------------------------------------------------");
-
-                            System.out.print("Deseja adicionar mais sucos? (s - sim / n - nao): ");
+                            if(escolhaSuco >= 1 && escolhaSuco <= 4){
+                                System.out.println("-------------------------------------------------------------------------------");
+                                System.out.println("Sucos pedidos: " + arraySucos);
+                                totalSucos = objRemoto. calcularTotalItem(precoS1, precoS2, precoS3, qntS1, qntS2, qntS3);
+                                System.out.println("Total dos sucos pedidos: R$" + totalSucos);
+                                System.out.println("-------------------------------------------------------------------------------");
+                            }
+                           
+                            System.out.print("Deseja adicionar sucos? (s - sim / n - nao): ");
                             adicionar = input.next().charAt(0);
 
                         }while(adicionar == 's' || adicionar == 'S');
                         break;
                     
                     case 3:
+                        System.exit(0);
                         break;
                         
                     default:
-                        System.out.print("Opcao invalida, escolha de 1 a 3");
+                        System.out.print("Opcao invalida, escolha de 1 a 3.\n");
                         break;   
                 }
                 
                 System.out.print("Deseja voltar para o menu principal? (s - sim / n - nao): ");
                 voltar = input.next().charAt(0);
-            
-            }while(voltar == 's' || voltar == 'S');
-            
-            System.out.println("-------------------------------------------------------------------------------");
-            System.out.println("Pedido: " + arrayLanches + arraySucos);
-            System.out.println("Total: R$" + objRemoto.calcularTotalPedido(totalLanches, totalSucos));
-            System.out.println("-------------------------------------------------------------------------------");
-            
-            System.out.print("Confirmar compra? (s - sim / n - nao): ");
-            confirmar = input.next().charAt(0);
-            
-            if(confirmar == 's' || confirmar == 'S'){
-                System.out.print(objRemoto.gerarPagamento());
-                System.out.print("\nDigite a opcao de pagamento desejada: ");
-                int escolhaPagamento = input.nextInt();
-                System.out.print("PAGAMENTO EFETUADO COM SUCESSO!");
                 
-                int numCompra = objRemoto.gerarNumeroPedido();
-                System.out.println("\nNumero do pedido: " + numCompra);
-                objRemoto.criandoPedido(numCompra,arrayLanches, arraySucos);          
-            } 
-            
+            }while(voltar == 's' || voltar == 'S');
+
+            if(arrayLanches.isEmpty() == false || arraySucos.isEmpty() == false){
+                System.out.println("-------------------------------------------------------------------------------");
+                System.out.println("Pedido: " + arrayLanches + arraySucos);
+                System.out.println("Total: R$" + objRemoto.calcularTotalPedido(totalLanches, totalSucos));
+                System.out.println("-------------------------------------------------------------------------------");
+
+                System.out.print("Confirmar compra? (s - sim / n - nao): ");
+                confirmar = input.next().charAt(0);
+
+                if(confirmar == 's' || confirmar == 'S'){
+                    System.out.print(objRemoto.gerarPagamento());
+                    
+                    System.out.print("\nDigite a opcao de pagamento desejada: ");
+                    int escolhaPagamento = input.nextInt();
+                    
+                    System.out.print("PAGAMENTO EFETUADO COM SUCESSO!");
+
+                    int numCompra = objRemoto.gerarNumeroPedido();
+                    System.out.println("\nNumero do pedido: " + numCompra);
+                    objRemoto.criandoPedido(numCompra,arrayLanches, arraySucos);          
+                } 
+            }
+
         }catch(Exception e){
             System.out.println("Erro: "+ e.getMessage());
         }
