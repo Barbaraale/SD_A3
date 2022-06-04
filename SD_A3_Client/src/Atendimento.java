@@ -5,6 +5,7 @@ public class Atendimento implements Interface{
     
     private int acumulador = 0;
     private ArrayList<ArrayList> pedidos = new ArrayList<>();
+    private ArrayList<Object> numeros = new ArrayList<>();
     
     public Atendimento() throws RemoteException{
         super();
@@ -106,6 +107,16 @@ public class Atendimento implements Interface{
     @Override
     public void removerPedido(int indice) throws RemoteException {
         pedidos.remove(indice);
+    }
+
+    @Override
+    public void pedidoPronto(Object numeroPedido) throws RemoteException {
+        numeros.add(numeroPedido);
+    }
+    
+    @Override
+    public ArrayList pegarPedidoPronto() throws RemoteException {
+        return numeros;
     }
 
 }

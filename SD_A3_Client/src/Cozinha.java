@@ -6,7 +6,7 @@ public class Cozinha {
         
         Scanner input = new Scanner(System.in);
         
-        System.out.println("Carregando a cozinha.");
+        System.out.println("Carregando cozinha.");
         
         try{
             Interface objRemoto = (Interface) Naming.lookup("rmi://LOCALHOST:1099/atendimento");
@@ -24,7 +24,8 @@ public class Cozinha {
 
                 for(int j = 0; j < objRemoto.pegarTodosPedidos().size(); j++){    
                     if(objRemoto.pegarPedido(j).get(0).equals(num)){
-                        objRemoto.removerPedido(j);
+                        objRemoto.pedidoPronto(objRemoto.pegarPedido(j).get(0));
+                        objRemoto.removerPedido(j);               
                     } 
                 }
             }

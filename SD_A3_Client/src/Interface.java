@@ -15,5 +15,7 @@ public interface Interface extends Remote {
     public ArrayList pegarTodosPedidos()throws RemoteException;
     public ArrayList pegarPedido(int indice) throws RemoteException;
     public void removerPedido(int indice)throws RemoteException;
+    public void pedidoPronto (Object numeroPedido)throws RemoteException;
+    public ArrayList pegarPedidoPronto() throws RemoteException;
     
 }
