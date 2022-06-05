@@ -154,7 +154,13 @@ public class Client {
 
             if(arrayLanches.isEmpty() == false || arraySucos.isEmpty() == false){
                 System.out.println("-------------------------------------------------------------------------------");
-                System.out.println("Pedido: " + arrayLanches + arraySucos);
+                if(arrayLanches.isEmpty()== true){
+                    System.out.println("Pedido: " + arraySucos);
+                }else if(arraySucos.isEmpty()== true){
+                    System.out.println("Pedido: " + arrayLanches);
+                }else{
+                    System.out.println("Pedido: " + arrayLanches + arraySucos);
+                }
                 System.out.println("Total: R$" + objRemoto.calcularTotalPedido(totalLanches, totalSucos));
                 System.out.println("-------------------------------------------------------------------------------");
 
@@ -173,9 +179,17 @@ public class Client {
                     }
                 }
                 System.out.print("PAGAMENTO EFETUADO COM SUCESSO!");
+                
                 int numCompra = objRemoto.gerarNumeroPedido();
                 System.out.println("\nNumero do pedido: " + numCompra);
-                objRemoto.criandoPedido(numCompra,arrayLanches, arraySucos);          
+                
+                if(arrayLanches.isEmpty()== true){
+                    objRemoto.criandoPedidoSucos(numCompra, arraySucos);
+                }else if(arraySucos.isEmpty()== true){
+                    objRemoto.criandoPedidoLanches(numCompra, arrayLanches);
+                }else{
+                    objRemoto.criandoPedidoCompleto(numCompra,arrayLanches, arraySucos);
+                }          
             }
 
         }catch(Exception e){

@@ -11,7 +11,9 @@ public interface Interface extends Remote {
     public double calcularTotalPedido (double totalLanches, double totalSucos) throws RemoteException;
     public String gerarPagamento()throws RemoteException;
     public int gerarNumeroPedido()throws RemoteException;
-    public void criandoPedido(int numeroPedido, ArrayList lanches, ArrayList sucos) throws RemoteException;
+    public void criandoPedidoCompleto(int numeroPedido, ArrayList lanches, ArrayList sucos) throws RemoteException;
+    public void criandoPedidoLanches(int numeroPedido, ArrayList lanches) throws RemoteException;
+    public void criandoPedidoSucos(int numeroPedido, ArrayList sucos) throws RemoteException;
     public ArrayList pegarTodosPedidos()throws RemoteException;
     public ArrayList pegarPedido(int indice) throws RemoteException;
     public void removerPedido(int indice)throws RemoteException;

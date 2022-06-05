@@ -85,13 +85,29 @@ public class Atendimento implements Interface{
     }
     
     @Override
-    public void criandoPedido(int numeroPedido, ArrayList lanches, ArrayList sucos) throws RemoteException {
+    public void criandoPedidoCompleto(int numeroPedido, ArrayList lanches, ArrayList sucos) throws RemoteException {
         ArrayList<Object> pedido = new ArrayList<>();
         pedido.add(numeroPedido);
         pedido.add(lanches);
         pedido.add(sucos);
         pedidos.add(pedido);
     }  
+    
+    @Override
+    public void criandoPedidoLanches(int numeroPedido, ArrayList lanches) throws RemoteException {
+        ArrayList<Object> pedido = new ArrayList<>();
+        pedido.add(numeroPedido);
+        pedido.add(lanches);
+        pedidos.add(pedido);
+    }
+    
+    @Override
+    public void criandoPedidoSucos(int numeroPedido, ArrayList sucos) throws RemoteException {
+        ArrayList<Object> pedido = new ArrayList<>();
+        pedido.add(numeroPedido);
+        pedido.add(sucos);
+        pedidos.add(pedido);
+    }
     
     @Override
     public ArrayList pegarTodosPedidos()throws RemoteException {
