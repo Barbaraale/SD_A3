@@ -19,5 +19,11 @@ public interface Interface extends Remote {
     public void removerPedido(int indice)throws RemoteException;
     public void pedidoPronto (Object numeroPedido)throws RemoteException;
     public ArrayList pegarPedidoPronto() throws RemoteException;
+    public void enviarLancheEstoque(ArrayList<Integer> controleEstoqueLanche) throws RemoteException;
+    public void enviarSucoEstoque(ArrayList<Integer> controleEstoqueSuco) throws RemoteException;
+    public ArrayList pegarLancheEstoque() throws RemoteException;
+    public ArrayList pegarSucoEstoque() throws RemoteException;
+    public StringBuilder itemFaltando(String itemFaltando) throws RemoteException;
+    public String getItemFaltando() throws RemoteException;
     
 }

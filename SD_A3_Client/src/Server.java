@@ -21,8 +21,8 @@ public class Server extends UnicastRemoteObject {
             registro = LocateRegistry.createRegistry(1099);
             
             registro.rebind("atendimento", remote);
-        }
-        catch (Exception ex) {
+            
+        }catch (Exception ex) {
             System.out.println("error: " + ex.getMessage());
         }
     }

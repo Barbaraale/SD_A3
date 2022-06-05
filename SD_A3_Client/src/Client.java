@@ -10,6 +10,8 @@ public class Client {
         //Listas 
         ArrayList<String> arrayLanches = new ArrayList<>();
         ArrayList<String> arraySucos = new ArrayList<>();
+        ArrayList<Integer> controleEstoqueLanche = new ArrayList<>();
+        ArrayList<Integer> controleEstoqueSuco = new ArrayList<>();
         
         //Repetição
         char adicionar, voltar, confirmar;
@@ -25,7 +27,7 @@ public class Client {
         String suco1 = "SUCO DE LARANJA", suco2 = "LIMONADA", suco3 = "PINK LEMONADE";
         double totalSucos = 0, precoS1 = 10.00, precoS2 = 8.00, precoS3 = 15.00;
              
-        System.out.println("Carregando o cliente.");
+        System.out.println("Carregando cliente.");
         
         try{
             Interface objRemoto = (Interface) Naming.lookup("rmi://LOCALHOST:1099/atendimento");
@@ -52,18 +54,28 @@ public class Client {
                                     System.out.print("Digite a quantidade de " + lanche1 + ": ");
                                     qntL1 = input.nextInt();
                                     arrayLanches.add(lanche1 + " x " + qntL1);
+                                    for(int i = 1; i<=qntL1; i++){
+                                        controleEstoqueLanche.add(1);
+                                    }
                                     break;
 
                                 case 2:
                                     System.out.print("Digite a quantidade de " + lanche2 + ": ");
                                     qntL2 = input.nextInt();
                                     arrayLanches.add(lanche2 + " x " + qntL2);
+                                    for(int i = 1; i<=qntL2; i++){
+                                        controleEstoqueLanche.add(2);
+                                    }
+                                    
                                     break;
 
                                 case 3:
                                     System.out.print("Digite a quantidade de " + lanche3 + ": ");
                                     qntL3 = input.nextInt();
                                     arrayLanches.add(lanche3 + " x " + qntL3);
+                                    for(int i = 1; i<=qntL3; i++){
+                                        controleEstoqueLanche.add(3);
+                                    }
                                     break;
                                     
                                 case 4:
@@ -101,18 +113,27 @@ public class Client {
                                     System.out.print("Digite a quantidade de " + suco1 + ": ");
                                     qntS1 = input.nextInt();
                                     arraySucos.add(suco1 + " x " + qntS1);
+                                    for(int i = 1; i<=qntS1; i++){
+                                        controleEstoqueSuco.add(1);
+                                    }
                                     break;
 
                                 case 2:
                                     System.out.print("Digite a quantidade de " + suco2 + ": ");
                                     qntS2 = input.nextInt();
                                     arraySucos.add(suco2 + " x " + qntS2);
+                                    for(int i = 1; i<=qntS2; i++){
+                                        controleEstoqueSuco.add(2);
+                                    }
                                     break;
 
                                 case 3:
                                     System.out.print("Digite a quantidade de " + suco3 + ": ");
                                     qntS3 = input.nextInt();
                                     arraySucos.add(suco3 + " x " + qntS3);
+                                    for(int i = 1; i<=qntS3; i++){
+                                        controleEstoqueSuco.add(3);
+                                    }
                                     break;
                                     
                                 case 4:
@@ -184,6 +205,9 @@ public class Client {
                     }
                     
                     System.out.print("PAGAMENTO EFETUADO COM SUCESSO!");
+                    
+                    objRemoto.enviarLancheEstoque(controleEstoqueLanche);
+                    objRemoto.enviarSucoEstoque(controleEstoqueSuco);
                 
                     int numCompra = objRemoto.gerarNumeroPedido();
                     System.out.println("\nNumero do pedido: " + numCompra);
@@ -197,6 +221,7 @@ public class Client {
                     }          
                 }
             }
+            
         }catch(Exception e){
             System.out.println("Erro: "+ e.getMessage());
         }

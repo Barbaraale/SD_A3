@@ -10,6 +10,9 @@ public class Cozinha {
         
         try{
             Interface objRemoto = (Interface) Naming.lookup("rmi://LOCALHOST:1099/atendimento");
+            
+            String itemFaltando = objRemoto.getItemFaltando();
+            System.out.println(itemFaltando);
   
             while(objRemoto.pegarTodosPedidos().isEmpty() == false){
                 System.out.print("-------------------------------------------------------------------------------");

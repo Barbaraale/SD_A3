@@ -6,6 +6,9 @@ public class Atendimento implements Interface{
     private int acumulador = 0;
     private ArrayList<ArrayList> pedidos = new ArrayList<>();
     private ArrayList<Object> numeros = new ArrayList<>();
+    private ArrayList<Integer> lancheEstoque = new ArrayList<>();
+    private ArrayList<Integer> sucoEstoque = new ArrayList<>();
+    private StringBuilder itemFaltando = new StringBuilder();
     
     public Atendimento() throws RemoteException{
         super();
@@ -136,6 +139,42 @@ public class Atendimento implements Interface{
     @Override
     public ArrayList pegarPedidoPronto() throws RemoteException {
         return numeros;
+    }
+    
+    @Override
+    public void enviarLancheEstoque(ArrayList <Integer>controleLanche) throws RemoteException {
+       controleLanche.forEach((item) ->
+       lancheEstoque.add((item)));
+    }
+
+    @Override
+    public void enviarSucoEstoque(ArrayList <Integer>controleSucos) throws RemoteException {
+        controleSucos.forEach((item) ->
+        sucoEstoque.add((item)));
+     }
+    
+     @Override
+     public ArrayList<Integer> pegarLancheEstoque()throws RemoteException {
+         return lancheEstoque;
+     }
+
+     @Override
+     public ArrayList <Integer> pegarSucoEstoque()throws RemoteException {
+        return sucoEstoque;
+    }
+
+    @Override 
+    public StringBuilder itemFaltando(String item)throws RemoteException {
+        itemFaltando.append(" | Item em baixa: ");
+        itemFaltando.append(item); 
+        itemFaltando.append(" |");
+
+        return itemFaltando;
+    }
+
+    @Override 
+    public String getItemFaltando()throws RemoteException {
+        return itemFaltando.toString();
     }
 
 }
