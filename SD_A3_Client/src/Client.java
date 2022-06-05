@@ -167,31 +167,36 @@ public class Client {
                 System.out.print("Confirmar compra? (s - sim / n - nao): ");
                 confirmar = input.next().charAt(0);
                 
-                while(escolhaPagamento < 1 || escolhaPagamento > 3){
-                    if(confirmar == 's' || confirmar == 'S'){
+                if(confirmar == 's' || confirmar == 'S'){
+                    while(escolhaPagamento < 1 || escolhaPagamento > 4){
                         System.out.print(objRemoto.gerarPagamento());
 
-                        System.out.print("\nDigite a opcao de pagamento desejada: ");
-                        escolhaPagamento = input.nextInt();     
-                    }
-                    if(escolhaPagamento < 1 || escolhaPagamento > 3){
-                        System.out.print("Opcao invalida, escolha de 1 a 3.\n");
-                    }
-                }
-                System.out.print("PAGAMENTO EFETUADO COM SUCESSO!");
-                
-                int numCompra = objRemoto.gerarNumeroPedido();
-                System.out.println("\nNumero do pedido: " + numCompra);
-                
-                if(arrayLanches.isEmpty()== true){
-                    objRemoto.criandoPedidoSucos(numCompra, arraySucos);
-                }else if(arraySucos.isEmpty()== true){
-                    objRemoto.criandoPedidoLanches(numCompra, arrayLanches);
-                }else{
-                    objRemoto.criandoPedidoCompleto(numCompra,arrayLanches, arraySucos);
-                }          
-            }
+                        System.out.print("\nDigite a opcao desejada: ");
+                        escolhaPagamento = input.nextInt();
+                        
+                        if(escolhaPagamento == 4){
+                            System.exit(0);
+                        }
 
+                        if(escolhaPagamento < 1 || escolhaPagamento > 4){
+                            System.out.print("Opcao invalida, escolha de 1 a 4.\n");
+                        }
+                    }
+                    
+                    System.out.print("PAGAMENTO EFETUADO COM SUCESSO!");
+                
+                    int numCompra = objRemoto.gerarNumeroPedido();
+                    System.out.println("\nNumero do pedido: " + numCompra);
+
+                    if(arrayLanches.isEmpty()== true){
+                        objRemoto.criandoPedidoSucos(numCompra, arraySucos);
+                    }else if(arraySucos.isEmpty()== true){
+                        objRemoto.criandoPedidoLanches(numCompra, arrayLanches);
+                    }else{
+                        objRemoto.criandoPedidoCompleto(numCompra,arrayLanches, arraySucos);
+                    }          
+                }
+            }
         }catch(Exception e){
             System.out.println("Erro: "+ e.getMessage());
         }
