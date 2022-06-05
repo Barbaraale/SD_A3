@@ -70,7 +70,7 @@ public class Estoque {
                 objRemoto.itemFaltando("Suco de Laranja");
             }
             if(limonade <= 2) {
-                objRemoto.itemFaltando("Limonade");
+                objRemoto.itemFaltando("Limonada");
             }
             if(sucoUva <= 2) {
                 objRemoto.itemFaltando("Suco de Uva");
