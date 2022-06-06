@@ -55,26 +55,6 @@ public class Estoque {
             System.out.println("Limonada: " + limonade);
             System.out.println("Suco de Uva: " + sucoUva);
             System.out.println("-------------------------------------------------------------------------------");
-
-            //Verificando o estoque e caso algum item esteja baixo envia o aviso para cozinha.
-            if(xsalada <= 2) {
-                objRemoto.itemFaltando("X-Salada");
-            }
-            if(xbacon <= 2) {
-                objRemoto.itemFaltando("X-Bacon");
-            }
-            if(xtudo <= 2) {
-                objRemoto.itemFaltando("X-Tudo");
-            }
-            if(sucoLaranja <= 2) {
-                objRemoto.itemFaltando("Suco de Laranja");
-            }
-            if(limonade <= 2) {
-                objRemoto.itemFaltando("Limonada");
-            }
-            if(sucoUva <= 2) {
-                objRemoto.itemFaltando("Suco de Uva");
-            }
         
         } catch(Exception e){
             System.out.println("Erro: "+ e.getMessage());

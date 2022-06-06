@@ -163,18 +163,4 @@ public class Atendimento implements Interface{
         return sucoEstoque;
     }
 
-    @Override 
-    public StringBuilder itemFaltando(String item)throws RemoteException {
-        itemFaltando.append(" | Item em baixa: ");
-        itemFaltando.append(item); 
-        itemFaltando.append(" |");
-
-        return itemFaltando;
-    }
-
-    @Override 
-    public String getItemFaltando()throws RemoteException {
-        return itemFaltando.toString();
-    }
-
 }
