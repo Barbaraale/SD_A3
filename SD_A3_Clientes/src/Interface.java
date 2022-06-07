@@ -23,5 +23,9 @@ public interface Interface extends Remote{
     public void enviarSucoEstoque(ArrayList<Integer> controleEstoqueSuco) throws RemoteException;
     public ArrayList pegarLancheEstoque() throws RemoteException;
     public ArrayList pegarSucoEstoque() throws RemoteException;
+    public int getConnection() throws RemoteException;
+    public int setConnection(int num) throws RemoteException;
+    public ArrayList<String> setItensAviso(ArrayList<String> todosItens)throws RemoteException;
+    public ArrayList<String> getItensAviso()throws RemoteException;
     
 }

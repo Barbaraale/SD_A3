@@ -4,11 +4,14 @@ import java.util.ArrayList;
 public class Atendimento implements Interface{
     
     private int acumulador = 0;
+    private int estoqueConnection = 0;
     private ArrayList<ArrayList> pedidos = new ArrayList<>();
     private ArrayList<Object> numeros = new ArrayList<>();
     private ArrayList<Integer> lancheEstoque = new ArrayList<>();
     private ArrayList<Integer> sucoEstoque = new ArrayList<>();
-    private StringBuilder itemFaltando = new StringBuilder();
+    private ArrayList<String> itensFaltando = new ArrayList<>();
+    private ArrayList<Integer> avisoEstoque = new ArrayList<>();
+    private ArrayList<String> itensAviso = new ArrayList<>();
     
     public Atendimento() throws RemoteException{
         super();
@@ -49,7 +52,7 @@ public class Atendimento implements Interface{
             "\nMENU SUCOS"+
             "\n1 - SUCO DE LARANJA = R$10,00"+
             "\n2 - LIMONADA = R$8,00"+
-            "\n3 - PINK LEMONADE = R$15,00"+
+            "\n3 - SUCO DE UVA = R$15,00"+
             "\n"+
             "\nCANCELAR PEDIDO"+
             "\n4 - SAIR"+
@@ -161,5 +164,28 @@ public class Atendimento implements Interface{
      @Override
      public ArrayList <Integer> pegarSucoEstoque()throws RemoteException {
         return sucoEstoque;
+    }
+     
+    @Override
+    public int setConnection(int num)throws RemoteException {
+        estoqueConnection = num;       
+        return estoqueConnection;
+    }
+
+    @Override 
+    public int getConnection()throws RemoteException{
+        return estoqueConnection;
+    }
+
+    @Override
+    public ArrayList<String> setItensAviso(ArrayList<String> itens)throws RemoteException {
+        itens.forEach((item) ->
+        itensAviso.add(item));
+        return itensAviso;  
+    }
+
+    @Override
+    public ArrayList<String> getItensAviso()throws RemoteException {
+        return itensAviso;
     }
 }

@@ -1,4 +1,5 @@
 import java.rmi.Naming;
+import java.util.ArrayList;
 
 public class Estoque {
     public static void main(String[] args) {
@@ -51,11 +52,152 @@ public class Estoque {
             }
 
             System.out.println(" ");
-            System.out.println("Suco Laranja: " + sucoLaranja);
+            System.out.println("Suco de Laranja: " + sucoLaranja);
             System.out.println("Limonada: " + limonade);
             System.out.println("Suco de Uva: " + sucoUva);
             System.out.println("-------------------------------------------------------------------------------");
         
+            ArrayList <String> todosItens = new ArrayList<>();//enviara os itens pra cozinha pelo metodo
+            ArrayList <String> itensServer = new ArrayList<>();
+            String cl1, cl2, cl3, cs1, cs2, cs3;
+
+            //Verifica se o servidor ja se comunicou com o estoque
+            if (objRemoto.getConnection() == 0) {
+                itensServer.add("nenhum");
+            }else if(objRemoto.getConnection() == 1){
+                objRemoto.getItensAviso().forEach((item) -> 
+                itensServer.add(item));
+            }
+
+            //envia o aviso de comunicacao com o servidor
+            objRemoto.setConnection(1);
+
+            //armazena nas variaveis de controle, caso o item esteja com estoque baixo:
+            if(xsalada <=2){
+                cl1= "yes";
+            }else {
+                cl1= "no";
+            }
+
+            if(xbacon <=2){
+                cl2= "yes";
+            }else {
+                cl2= "no";
+            }
+
+            if(xtudo <=2){
+                cl3= "yes";
+            }else {
+                cl3= "no";
+            }
+
+            if(sucoLaranja <=2){
+                cs1= "yes";
+            }else {
+                cs1= "no";
+            }
+
+            if(limonade <=2){
+                cs2= "yes";
+            }else {
+                cs2= "no";
+            }
+
+            if(sucoUva <=2){
+                cs3= "yes";
+            }else {
+                cs3= "no";
+            }
+
+            //Verificando se os itens ja foram enviados para cozinha e se nao ja adicionar no array
+            //para depois enviar
+
+            if(cl1 == "yes") {
+                int counter = 0;
+                for(int i =0; i< itensServer.size(); i++){
+                    if(itensServer.get(i).equals("X-Salada")){
+                        counter = 1;
+                    }
+                    if(i == itensServer.size() -1) {
+                        if(counter == 0){
+                            todosItens.add("X-Salada");
+                        }
+                    }
+                }
+            }
+
+            if(cl2 == "yes") {
+                int counter = 0;
+                for(int i =0; i< itensServer.size(); i++){
+                    if(itensServer.get(i).equals("X-Bacon")){
+                        counter = 1;
+                    }
+                    if(i == itensServer.size() -1) {
+                        if(counter == 0){
+                            todosItens.add("X-Bacon");
+                        }
+                    }
+                }
+            }
+
+            if(cl3 == "yes") {
+                int counter = 0;
+                for(int i =0; i< itensServer.size(); i++){
+                    if(itensServer.get(i).equals("X-Tudo")){
+                        counter = 1;
+                    }
+                    if(i == itensServer.size() -1) {
+                        if(counter == 0){
+                            todosItens.add("X-Tudo");
+                        }
+                    }
+                }
+            }
+
+            if(cs1 == "yes") {
+                int counter = 0;
+                for(int i =0; i< itensServer.size(); i++){
+                    if(itensServer.get(i).equals("Suco de Laranja")){
+                        counter = 1;
+                    }
+                    if(i == itensServer.size() -1) {
+                        if(counter == 0){
+                            todosItens.add("Suco de Laranja");
+                        }
+                    }
+                }
+            }
+
+            if(cs2 == "yes") {
+                int counter = 0;
+                for(int i =0; i< itensServer.size(); i++){
+                    if(itensServer.get(i).equals("Limonada")){
+                        counter = 1;
+                    }
+                    if(i == itensServer.size() -1) {
+                        if(counter == 0){
+                            todosItens.add("Limonada");
+                        }
+                    }
+                }
+            }
+
+            if(cs3 == "yes") {
+                int counter = 0;
+                for(int i =0; i< itensServer.size(); i++){
+                    if(itensServer.get(i).equals("Suco de Uva")){
+                        counter = 1;
+                    }
+                    if(i == itensServer.size() -1) {
+                        if(counter == 0){
+                            todosItens.add("Suco de Uva");
+                        }
+                    }
+                }
+            }
+            
+            objRemoto.setItensAviso(todosItens);
+            
         } catch(Exception e){
             System.out.println("Erro: "+ e.getMessage());
         }

@@ -24,7 +24,7 @@ public class Cliente {
         
         //Sucos
         int escolhaSuco, qntS1 = 0, qntS2 = 0, qntS3 = 0;
-        String suco1 = "SUCO DE LARANJA", suco2 = "LIMONADA", suco3 = "PINK LEMONADE";
+        String suco1 = "SUCO DE LARANJA", suco2 = "LIMONADA", suco3 = "SUCO DE UVA";
         double totalSucos = 0, precoS1 = 10.00, precoS2 = 8.00, precoS3 = 15.00;
              
         System.out.println("Carregando cliente.");

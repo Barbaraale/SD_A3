@@ -11,6 +11,12 @@ public class Cozinha {
         try{
             Interface objRemoto = (Interface) Naming.lookup("rmi://LOCALHOST:1099/atendimento");
 
+            //Exibindo os itens que estao acabando no estoque:
+            System.out.println("------------------------------------------------------");
+            System.out.println("Itens em Baixa: ");
+            System.out.println(objRemoto.getItensAviso());
+            System.out.println("------------------------------------------------------");
+            
             while(objRemoto.pegarTodosPedidos().isEmpty() == false){
                 System.out.print("-------------------------------------------------------------------------------");
                 System.out.print("\nPEDIDOS");
