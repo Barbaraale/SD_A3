@@ -11,19 +11,17 @@ public class Cozinha {
         try{
             Interface objRemoto = (Interface) Naming.lookup("rmi://LOCALHOST:1099/atendimento");
 
-            //Exibindo os itens que estao acabando no estoque:
-            System.out.println("------------------------------------------------------");
-            System.out.println("Itens em Baixa: ");
+            System.out.println("-----------------------------------------------------------------------------------------------------------------------");
+            System.out.println("ITENS EM BAIXA: ");
             System.out.println(objRemoto.getItensAviso());
-            System.out.println("------------------------------------------------------");
+            System.out.println("-----------------------------------------------------------------------------------------------------------------------");
             
             while(objRemoto.pegarTodosPedidos().isEmpty() == false){
-                System.out.print("-------------------------------------------------------------------------------");
-                System.out.print("\nPEDIDOS");
+                System.out.print("PEDIDOS");
                     for(int i = 0; i < objRemoto.pegarTodosPedidos().size(); i++) {
                         System.out.print("\n" + objRemoto.pegarPedido(i));           
                     }
-                System.out.print("\n-------------------------------------------------------------------------------");
+                System.out.print("\n-----------------------------------------------------------------------------------------------------------------------");
 
                 System.out.print("\nDigite o numero do pedido finalizado: ");
                 int num = input.nextInt();
@@ -35,10 +33,10 @@ public class Cozinha {
                     } 
                 }
             }
-            System.out.print("-------------------------------------------------------------------------------");
+            System.out.print("-----------------------------------------------------------------------------------------------------------------------");
             System.out.print("\nPEDIDOS");
             System.out.print("\n[Sem pedidos]");
-            System.out.print("\n-------------------------------------------------------------------------------\n");
+            System.out.print("\n-----------------------------------------------------------------------------------------------------------------------\n");
            
         }catch(Exception e){
             System.out.println("Erro: "+ e.getMessage());

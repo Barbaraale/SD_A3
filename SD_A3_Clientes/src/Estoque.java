@@ -30,7 +30,7 @@ public class Estoque {
                }
             }
 
-            System.out.println( "-------------------------------------------------------------------------------");
+            System.out.println("-----------------------------------------------------------------------------------------------------------------------");
             System.out.println("QUANTIDADE EM ESTOQUE");
             System.out.println("X-Salada = " + xsalada);
             System.out.println("X-Bacon = " + xbacon);
@@ -55,13 +55,12 @@ public class Estoque {
             System.out.println("Suco de Laranja: " + sucoLaranja);
             System.out.println("Limonada: " + limonade);
             System.out.println("Suco de Uva: " + sucoUva);
-            System.out.println("-------------------------------------------------------------------------------");
+            System.out.println("-----------------------------------------------------------------------------------------------------------------------");
         
-            ArrayList <String> todosItens = new ArrayList<>();//enviara os itens pra cozinha pelo metodo
+            ArrayList <String> todosItens = new ArrayList<>();
             ArrayList <String> itensServer = new ArrayList<>();
             String cl1, cl2, cl3, cs1, cs2, cs3;
 
-            //Verifica se o servidor ja se comunicou com o estoque
             if (objRemoto.getConnection() == 0) {
                 itensServer.add("nenhum");
             }else if(objRemoto.getConnection() == 1){
@@ -69,10 +68,8 @@ public class Estoque {
                 itensServer.add(item));
             }
 
-            //envia o aviso de comunicacao com o servidor
             objRemoto.setConnection(1);
 
-            //armazena nas variaveis de controle, caso o item esteja com estoque baixo:
             if(xsalada <=2){
                 cl1= "yes";
             }else {
@@ -108,9 +105,6 @@ public class Estoque {
             }else {
                 cs3= "no";
             }
-
-            //Verificando se os itens ja foram enviados para cozinha e se nao ja adicionar no array
-            //para depois enviar
 
             if(cl1 == "yes") {
                 int counter = 0;
